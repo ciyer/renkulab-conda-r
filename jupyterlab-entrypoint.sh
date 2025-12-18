@@ -8,7 +8,11 @@ source "${HOME}"/.bashrc
 JUPYTER_ENV_DIR=$1
 
 if [ -z "$JUPYTER_ENV_DIR" ]; then
-	echo "WARNING: Running with JUPYTER_ENV_DIR not set at all, this means python and jupyter executables are expected at /bin/."
+	micromamba activate
+	# echo "WARNING: Running with JUPYTER_ENV_DIR not set at all, this means python and jupyter executables are expected at /bin/."
+	echo "WARNING: JUPYTER_ENV_DIR is not set, using python at: "
+	JUPYTER_ENV_DIR="$(command -v python || true)"
+	echo "$JUPYTER_ENV_DIR"
 fi
 
 if [ -n "$RENKU_WORKING_DIR" ]; then
