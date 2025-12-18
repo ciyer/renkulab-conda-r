@@ -6,9 +6,9 @@ set -eo pipefail
 source "${HOME}"/.bashrc
 
 JUPYTER_ENV_DIR=$1
+micromamba activate
 
 if [ -z "$JUPYTER_ENV_DIR" ]; then
-	micromamba activate
 	# echo "WARNING: Running with JUPYTER_ENV_DIR not set at all, this means python and jupyter executables are expected at /bin/."
 	echo "WARNING: JUPYTER_ENV_DIR is not set, using python at: "
 	JUPYTER_ENV_DIR="$(command -v python || true)"
