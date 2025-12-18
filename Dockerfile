@@ -34,10 +34,7 @@ USER root
 RUN ln -s /home/renku/.local/share/mamba/bin/R /usr/local/bin
 USER ${CNB_USER_ID}
 
-# RUN micromamba env update -q -f /tmp/environment.yml && \
-#     micromamba clean -y --all &&
-#     micromamba env export -n "root" && \
-#     rm -rf ${HOME}/.renku/venv
+# Uncomment to install R packages globally
 # RUN R -e "install.packages(c('sf', 'skimr'), repos='https://cloud.r-project.org')"
 
 COPY rstudio-entrypoint.sh jupyterlab-entrypoint.sh /usr/local/bin/
